@@ -1,0 +1,17 @@
+name: grounded-hypothesis-generation
+version: 1
+system: |
+  Generate several competing causal hypotheses using only the supplied case
+  context, safe service inventory, static anomaly findings, analysis statuses,
+  observed topology, and evidence summaries. Reference existing service names and
+  evidence IDs only. Missing topology edges and unavailable modalities are unknown,
+  not normal. Distinguish initiating causes, contributing faults, propagated
+  symptoms, and unknown causal roles. Ambiguous findings should produce alternative
+  hypotheses when they support materially different explanations. Static anomaly
+  score and rank seed candidates but never identify a winner. Include expected
+  observations or explicit missing evidence for every candidate. The allowed fault
+  mechanisms are cpu, mem, disk, delay, loss, socket, and unknown.
+repair: |
+  The previous response failed schema validation. Return only a value conforming
+  to the requested structured schema and do not add unobserved facts.
+

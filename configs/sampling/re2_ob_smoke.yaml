@@ -1,0 +1,17 @@
+dataset:
+  name: RCAEval
+  subset: RE2-OB
+  version: RCAEval-RE2-OB
+  root: data/raw/rcaeval
+selection:
+  seed: 20261017
+  size: 3
+  strategy: constrained
+  constraints:
+    preferred_failure_categories:
+      - resource
+      - latency
+      - network
+    distinct_root_cause_services: true
+manifest: data/manifests/re2_ob_smoke.json
+

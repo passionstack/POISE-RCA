@@ -1,0 +1,20 @@
+project: poise-rca
+dataset:
+  name: RCAEval
+  subset: RE2-OB
+  root: data/raw/rcaeval
+results:
+  root: results
+model:
+  provider: openai
+  name: gpt-4.1-mini
+  temperature: 0.0
+mas:
+  max_supervisor_steps: 10
+tools:
+  per_tool_timeout_seconds: 30
+tracing:
+  enabled: true
+  environment: development
+  export_raw_telemetry: false
+

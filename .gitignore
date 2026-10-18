@@ -1,0 +1,50 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-tmp/
+.superpowers/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# RCAEval telemetry and derived datasets
+data/raw/
+data/processed/
+data/cache/
+data/*
+!data/manifests/
+data/manifests/*
+!data/manifests/*.json
+tests/fixtures/
+
+# Runtime artifacts
+results/
+logs/
+checkpoints/
+.langfuse/
+langfuse-data/
+*.sqlite
+*.sqlite3
+
+# Model artifacts
+*.bin
+*.safetensors
+*.ckpt
+models/
+
+# Notebook runtime outputs
+.ipynb_checkpoints/
+
+# Local Markdown notes
+local-notes/
+
