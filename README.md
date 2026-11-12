@@ -13,7 +13,7 @@ Analysis）是一个面向云计算故障诊断的 LangGraph 原型系统。它�
 
 ## 系统架构
 
-![POISE-RCA 系统架构](docs\images\poise-rca-architecture.png)
+![POISE-RCA 系统架构](docs/images/poise-rca-architecture.png)
 
 系统先复用 RCAEval 的 MM-BARO 静态分析提取带来源的异常，再据此生成任意数量的初始假设。
 Supervisor 围绕候选假设之间的区别规划比较或挑战任务，并把每个任务交给上下文隔离的 Worker；
