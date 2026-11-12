@@ -1,4 +1,9 @@
-# POISE-RCA
+<p align="center">
+  <img src="docs/images/poise-rca-logo.png" alt="POISE-RCA 云端机器人诊断 Logo" width="200">
+</p>
+
+
+<h1 align="center">POISE-RCA</h1>
 
 POISE-RCA（Partial-Observation Investigation with Structured Evidence for Root Cause
 Analysis）是一个面向云计算故障诊断的 LangGraph 原型系统。它重点解决以下问题：
@@ -6,16 +11,20 @@ Analysis）是一个面向云计算故障诊断的 LangGraph 原型系统。它�
 > 当日志、指标或链路数据不完整时，诊断 Agent 应当给出与现有证据强度相匹配的结论，
 > 明确说明缺失信息，而不是为了输出唯一根因而强行猜测。
 
+## 系统架构
+
+![POISE-RCA 系统架构](docs\images\poise-rca-architecture.png)
+
 系统先复用 RCAEval 的 MM-BARO 静态分析提取带来源的异常，再据此生成任意数量的初始假设。
 Supervisor 围绕候选假设之间的区别规划比较或挑战任务，并把每个任务交给上下文隔离的 Worker；
 Worker 可以在同一次调查中组合日志、指标和链路查询，返回带证据引用的自然语言结论、未解决问题
 以及新候选建议。最终结果不一定是唯一根因，而是以下四种分级状态之一：
 
-| 状态 | 含义 |
-|---|---|
-| `CONFIRMED` | 证据满足确认条件，可以给出根因 |
-| `NARROWED` | 已缩小候选范围，但证据不足以确认唯一根因 |
-| `INDETERMINATE` | 当前观测无法区分候选假设 |
+| 状态                  | 含义                                         |
+| --------------------- | -------------------------------------------- |
+| `CONFIRMED`           | 证据满足确认条件，可以给出根因               |
+| `NARROWED`            | 已缩小候选范围，但证据不足以确认唯一根因     |
+| `INDETERMINATE`       | 当前观测无法区分候选假设                     |
 | `OBSERVATION_FAILURE` | 数据源缺失、损坏或工具失败，无法形成有效诊断 |
 
 ## 核心特点
@@ -235,11 +244,11 @@ results/
 
 各文件用途如下：
 
-| 文件 | 内容 |
-|---|---|
-| `report.json` | 最终状态与精确停止原因、所有候选的四态生命周期和因果角色、Worker 自然语言结论及引用、未解决问题、候选提升/拒绝、Supervisor 步数、根因或剩余候选、缺失证据和人工建议 |
-| `state.json` | LangGraph 最终结构化状态，适合调试完整调查过程 |
-| `summary.json` | 批处理案例数量、各状态计数及每个案例的报告路径 |
+| 文件           | 内容                                                         |
+| -------------- | ------------------------------------------------------------ |
+| `report.json`  | 最终状态与精确停止原因、所有候选的四态生命周期和因果角色、Worker 自然语言结论及引用、未解决问题、候选提升/拒绝、Supervisor 步数、根因或剩余候选、缺失证据和人工建议 |
+| `state.json`   | LangGraph 最终结构化状态，适合调试完整调查过程               |
+| `summary.json` | 批处理案例数量、各状态计数及每个案例的报告路径               |
 
 可以通过环境变量修改结果根目录：
 
